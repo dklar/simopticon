@@ -7,12 +7,15 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 include_directories(${Python3_INCLUDE_DIRS})
 
-find_package(libzip 1.7.3 REQUIRED)
+#find_package(libzip 1.7.3 REQUIRED)
 
 include(FetchContent)
 FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
 FetchContent_MakeAvailable(json)
 
+#OR find_package in line 10
+FetchContent_Declare(libzip URL https://libzip.org/download/libzip-1.7.3.tar.gz)
+FetchContent_MakeAvailable(libzip)
 
 
 add_library(simopticonLib STATIC src/evaluation/Evaluation.h src/evaluation/constant_headway/ConstantHeadway.h 
