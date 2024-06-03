@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Runner parameter</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/navbarStyles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <nav class="navbar fixed-top">
+        <button type="button" class="btn btn-light-secondary" id="backBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-arrow-left-circle"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z">
+                </path>
+            </svg>
+        </button>
+
+        <h1 class="navbar-title">Runner settings</h1>
+        <div class="dropdown">
+            <button class="btn btn-light-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                  </svg>
+            </svg>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#" id="closeBtn">Close</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mainContentSpace">
+
+        <main>
+            <div class="row">
+                <div class="col-md-2 d-md-block">
+                </div>
+
+                <div class="col-md-8 .d-block">
+                    <form id="jsonForm" class="mb-3 row">
+                        <fieldset>
+                            <div class="card mb-4">
+                                <div class="card-header">Runner options</div>
+                                <div class="card-body">
+                                    <div class="card mb-4">
+                                        <div class="card-header">Controller options</div>
+                                        <div class="card-body">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="controllerName" placeholder="CACC">
+                                                <label class="form-check-label" for="controllerName">Controller Name:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="number" class="form-control" id="headway" step="0.01" placeholder="0.1">
+                                                <label class="form-check-label" for="headway">Headway:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="number" class="form-control" id="insertDistance" placeholder="0">
+                                                <label class="form-check-label" for="insertDistance">Insert Distance:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="number" class="form-control" id="insertHeadway" step="0.01" placeholder="0">
+                                                <label class="form-check-label" for="insertHeadway">Insert Headway:</label>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="card mb-4">
+                                        <div class="card-header">Other options</div>
+                                        <div class="card-body">
+                                            <div class="form-floating mb-3">
+                                                <input type="number" class="form-control" id="nrThreads"  placeholder="5">
+                                                <label class="form-check-label" for="nrThreads">Number of threads:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="number" class="form-control" id="repeat" placeholder="5">
+                                                <label class="form-check-label" for="repeat">Repetitions:</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-check-label" for="scenarios">Scenarios:</label>
+                                                <select multiple id="scenarios"  class="form-control">
+                                                    <option value="BrakingNoGui">BrakingNoGui</option>
+                                                    <option value="SinusoidalNoGui">SinusoidalNoGui</option>
+                                                </select>
+                                            </div><br>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="configDirectory" placeholder="">
+                                                <label class="form-check-label" for="configDirectory">Path:</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-primary float-end" id="okayBtn">Continue</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="col-md-2 d-md-block">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal fade" id="errorDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="errorDialogText">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="fixed-bottom  bg-light">
+        <div class="container p-4">
+            <div class="d-flex align-items-center justify-content-center small">
+                <div class="text-muted">
+                    <p id="info">Test</p>
+                </div>
+            </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="src/Renderer_ParameterRunnerEdit.js"></script>
+</body>
+
+</html>
