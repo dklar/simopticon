@@ -669,12 +669,13 @@ function loadSettings(filepath) {
     result.programSettings = JSON.parse(fs.readFileSync(filepath, 'utf8'));
   } else {
     projectsPath = path.join(app.getPath('home'),'PlexeProjects');
+    fs.mkdirSync(projectsPath);
     result.firstRun = true;
     result.programSettings = {
       sumoPath: "",
       plexePath: "",
       startServerLocal: false,
-      serverExecutable:"/home/dklar/Uni/RestServer/build/CrowRestServerSimopticon",
+      serverExecutable:"",
       serverPath: "127.0.0.1",
       port: 8080,
       projectPath: projectsPath
