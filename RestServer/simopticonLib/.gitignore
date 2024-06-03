@@ -1,0 +1,8 @@
+# CLion project files
+.idea
+cmake-build-*
+CMakeFiles
+
+config
+build
+docs/latex
